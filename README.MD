@@ -4,7 +4,7 @@
 ## Install
 
 ```bash
-npm i -g n.un
+npm i -g u.nu
 ```
 
 ## Use
