@@ -1,6 +1,6 @@
 {
   "name": "u.nu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "u.nu URL shortener for use in the terminal",
   "main": "unu.js",
   "bin": {

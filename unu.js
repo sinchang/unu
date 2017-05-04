@@ -7,7 +7,7 @@ const ncp = require("copy-paste")
 const request = require('request')
 const cliSpinners = require('cli-spinners')
 const logUpdate = require('log-update')
-const error = chalk.bold.red
+const chalkError = chalk.bold.red
 
 const questions = [{
     type: 'input',
@@ -20,7 +20,7 @@ const questions = [{
       if (pass) {
         return true
       }
-      return 'Please enter url'
+      return 'Please enter corrent url'
     }
   },
   {
@@ -46,9 +46,12 @@ inquirer.prompt(questions).then(function (answers) {
     clearInterval(timer)
     if (!error && response.statusCode == 200) {
       const res = JSON.parse(body);
+      if (res.code === 'error:keyword') {
+        return logUpdate(chalkError(`The keyword ${answers.keyword} is taken 😞`))
+      }
       ncp.copy(res.shorturl)
       return logUpdate(chalk.green(res.shorturl) + '  copied successfully ✔️')
     }
-    return logUpdate(error('Something error, Please try again 😞'))
+    return logUpdate(chalkError('Something error, Please try again 😞'))
   })
 })
