@@ -8,6 +8,10 @@ const request = require('request')
 const cliSpinners = require('cli-spinners')
 const logUpdate = require('log-update')
 const chalkError = chalk.bold.red
+const updateNotifier = require('update-notifier')
+const pkg = require('./package.json')
+
+updateNotifier({pkg}).notify()
 
 const questions = [{
     type: 'input',

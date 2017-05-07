@@ -1,6 +1,9 @@
 # unu
 > u.nu URL shortener for use in the terminal.
 
+[![NPM version](https://img.shields.io/npm/v/u.nu.svg?style=flat)](https://npmjs.com/package/u.nu)
+[![NPM downloads](https://img.shields.io/npm/dm/u.nu.svg?style=flat)](https://npmjs.com/package/u.nu)
+
 ## Install
 
 ```bash
