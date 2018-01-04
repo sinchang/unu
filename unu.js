@@ -49,6 +49,7 @@ inquirer.prompt(questions).then(answers => {
 
   request(api, (error, response, body) => {
     clearInterval(timer)
+
     if (!error && response.statusCode === 200) {
       const res = JSON.parse(body)
       if (res.code === 'error:keyword') {
@@ -57,6 +58,8 @@ inquirer.prompt(questions).then(answers => {
       ncp.copy(res.shorturl)
       return logUpdate(chalk.green(res.shorturl) + '  copied successfully ✔️')
     }
-    return logUpdate(chalkError('Something error, Please try again 😞'))
+
+    const errorMsg = JSON.parse(body).message
+    return logUpdate(chalkError(errorMsg || 'Something error, Please try again 😞'))
   })
 })
